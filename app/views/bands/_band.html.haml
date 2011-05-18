@@ -1,0 +1,6 @@
+%tr{:id => dom_id(band)}
+  %td= band.name
+  %td
+    = link_to 'Show', band
+    = link_to 'Edit', edit_band_path(band)
+    = link_to 'Destroy', band, :confirm => 'Are you sure?', :method => :delete, :remote => true

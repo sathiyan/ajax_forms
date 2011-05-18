@@ -1,0 +1,5 @@
+- content = escape_javascript(render(@band))
+
+$("#bands tbody").append("#{content}")
+$("#band_<%= @band.id %>").effect("highlight", {}, 3000);
+$("#new-band-form")[0].reset();
