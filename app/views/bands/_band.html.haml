@@ -1,6 +1,11 @@
 %tr{:id => dom_id(band)}
   %td= band.name
   %td
-    = link_to 'Show', band
-    = link_to 'Edit', edit_band_path(band)
+    = link_to 'Edit', edit_band_path(band), :class => 'edit_band'
     = link_to 'Destroy', band, :confirm => 'Are you sure?', :method => :delete, :remote => true
+%tr{:id => "#{dom_id(band)}_form", :class => 'hidden'}
+  = form_for band, :remote => true, :html => {:class => 'update-band-form'} do |f|
+    %td= f.text_field :name
+    %td
+      = f.submit
+      = link_to 'Cancel', '#', :class => 'cancel_update'

@@ -31,10 +31,14 @@ class BandsController < ApplicationController
 
   def update
     @band = Band.find(params[:id])
-    if @band.update_attributes(params[:band])
-      redirect_to @band, :notice => "Successfully updated band."
-    else
-      render :action => 'edit'
+    respond_to do |format|
+      if @band.update_attributes(params[:band])
+        format.html { redirect_to bands_path, :notice => "Successfully updated band." }
+        format.js
+      else
+        format.html { render :action => edit }
+        format.js
+      end
     end
   end
 

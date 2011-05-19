@@ -1,0 +1,10 @@
+- if @band.errors.any?
+  - msg = @band.errors.map {|k,v| "#{k.to_s.titleize} #{v}"}.join('\n')
+  alert("#{msg}")
+
+- else
+  - content = escape_javascript(render(@band))
+  target_row = $("tr#band_#{@band.id}")
+  target_row.next('tr').remove();
+  target_row.replaceWith("#{content}")
+  
