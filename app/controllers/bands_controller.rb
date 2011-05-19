@@ -20,7 +20,7 @@ class BandsController < ApplicationController
         format.js
       else
         format.html { render :action => :new }
-        format.js { render :status => :unprocessable_entity }
+        format.js
       end
     end
   end

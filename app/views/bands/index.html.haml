@@ -7,10 +7,12 @@
   %tbody
     = render :partial => @bands, :locals => {:list => true}
 
-
-%p
-  = form_for @band, :remote => true, :html => {:id => 'new-band-form'} do |f|
-    = f.text_field :name
-    = f.submit
+  %tfoot
+    %tr
+      %td &nbsp;
+    = form_for @band, :remote => true, :html => {:id => 'new-band-form'} do |f|
+      %tr
+        %td= f.text_field :name
+        %td= f.submit
 
 %p= link_to "New Band", new_band_path
