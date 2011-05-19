@@ -14,10 +14,14 @@ class BandsController < ApplicationController
 
   def create
     @band = Band.new(params[:band])
-    @band.save
     respond_to do |format|
-      format.html { redirect_to bands_path, :notice => 'Successfully created band.' }
-      format.js
+      if @band.save
+        format.html { redirect_to bands_path, :notice => 'Successfully created band.' }
+        format.js
+      else
+        format.html { render :action => :new }
+        format.js { render :status => :unprocessable_entity }
+      end
     end
   end
 
