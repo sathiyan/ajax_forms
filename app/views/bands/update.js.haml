@@ -1,12 +1,6 @@
-- if @band.errors.any?
-  - msg = @band.errors.map {|k,v| "#{k.to_s.titleize} #{v}"}.join('\n')
-  alert("#{msg}")
+removeForm();
 
-- else
-  - content = escape_javascript(render(@band))
-  target_row = $("tr#band_#{@band.id}")
-  target_row.replaceWith("#{content}")
+- content = escape_javascript(render(@band))
+target_row = $(".row#band_#{@band.id}")
 
-  target_row = $("tr#band_#{@band.id}")
-  target_row.show();
-  target_row.next('tr').hide();
+target_row.replaceWith("#{content}")

@@ -1,20 +1,12 @@
 - title "Bands"
 
-%table#bands
-  %thead
-    %tr
-      %th Name
-  %tbody
-    - @bands.each do |band|
-      = render :partial => 'band', :locals => {:band => band}
-      = render :partial => 'band_form', :locals => {:band => band}
+.table-div
+  .header-div
+    .column Name
+    .column Links
+  .body-div
+    = render @bands
 
-  %tfoot
-    %tr
-      %td &nbsp;
-    = form_for @band, :remote => true, :html => {:id => 'new-band-form'} do |f|
-      %tr
-        %td= f.text_field :name
-        %td= f.submit
+.clear
 
-%p= link_to "New Band", new_band_path
+%p= link_to "New Band", new_band_url, :class => 'new'

@@ -1,53 +1,48 @@
 class BandsController < ApplicationController
   def index
     @bands = Band.all
-    @band = Band.new
-  end
-
-  def show
-    @band = Band.find(params[:id])
   end
 
   def new
     @band = Band.new
+    render :partial => 'form', :locals => {:band => @band}
   end
 
   def create
     @band = Band.new(params[:band])
     respond_to do |format|
       if @band.save
-        format.html { redirect_to bands_path, :notice => 'Successfully created band.' }
         format.js
       else
-        format.html { render :action => :new }
-        format.js
+        format.js { render :partial => 'error' }
       end
     end
   end
 
   def edit
     @band = Band.find(params[:id])
+    render :partial => 'form', :locals => {:band => @band}
   end
 
   def update
     @band = Band.find(params[:id])
     respond_to do |format|
       if @band.update_attributes(params[:band])
-        format.html { redirect_to bands_path, :notice => "Successfully updated band." }
         format.js
       else
-        format.html { render :action => edit }
-        format.js
+        format.js { render :partial => 'error' }
       end
     end
   end
 
   def destroy
     @band = Band.find(params[:id])
-    @band.destroy
     respond_to do |format|
-      format.html { redirect_to bands_path, :notice => "Successfully destroyed band." }
-      format.js
+      if @band.destroy
+        format.js
+      else
+        format.js { render :partial => 'error' }
+      end
     end
   end
 end

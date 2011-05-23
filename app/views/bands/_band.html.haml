@@ -1,5 +1,6 @@
-%tr{:id => dom_id(band)}
-  %td= band.name
-  %td
+.row{:id => dom_id(band)}
+  .column= band.name
+  .column
     = link_to 'Edit', edit_band_path(band), :class => 'edit_band'
-    = link_to 'Destroy', band, :confirm => 'Are you sure?', :method => :delete, :remote => true
+    = link_to 'Destroy', band, :confirm => 'Are you sure?', :method => :delete, :remote => true, :class => 'remote-form'
+  .clear

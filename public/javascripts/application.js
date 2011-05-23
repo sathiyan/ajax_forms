@@ -1,19 +1,41 @@
 $(document).ready(function() {
 
+  $('a.new').click(function(){
+    url = $(this).attr('href');
+    $.get(url, function(data){
+      appendContent(data)
+    });
+    return false;
+  });
+
   $('a.edit_band').live('click', function() {
-    tr = $(this).closest('tr').toggle();
-    tr_form = tr.next('tr').toggle();
-//    tr_form.find('form')[0].reset();
+    currentDiv = $(this).closest('.row');
+    url = $(this).attr('href');
+    $.get(url, function(data){
+      currentDiv.after(data);
+      currentDiv.hide();
+    });
     return false;
   });
 
-  $('.cancel_update').live('click', function() {
-    tr = $(this).closest('tr').toggle();
-    tr_form = tr.prev('tr').toggle();
+  $('a.cancel').live('click', function() {
+    $('.row').show();
+    removeForm();
     return false;
   });
 
-  $("#new-label-form")
-      .bind("ajax:success", function(xhr, data, status) { console.log(data) })
-      .bind("ajax:error", function(xhr, data, status) { console.log(data) })
+  $(".remote-form")
+      .live("ajax:before", function() { console.log('before') })
+      .live("ajax:beforeSend", function(xhr, settings) { console.log('beforeSend') })
+      .live("ajax:success", function(xhr, data, status) { console.log('success') })
+      .live("ajax:complete", function(xhr, status) { console.log('complete') })
+      .live("ajax:error", function(xhr, status, error) { console.log('error') })
 });
+
+function removeForm() {
+  $('.form').remove();
+}
+
+function appendContent(content){
+  $('.body-div').append(content);
+}

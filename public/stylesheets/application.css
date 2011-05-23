@@ -62,3 +62,13 @@ a {
     margin: 8px 10px; }
   .error_messages ul {
     margin: 0; }
+
+.table-div .header-div {
+  font-weight: bold;
+  text-align: center; }
+.table-div .column {
+  float: left;
+  height: 20px;
+  width: 200px; }
+.table-div .body-div, .table-div .row {
+  clear: both; }

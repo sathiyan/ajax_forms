@@ -1,8 +1,6 @@
-= form_for @band, :validate => true do |f|
-  = f.error_messages
-  %p
-    = f.label :name
-    %br
-    = f.text_field :name
-  %p
-    = f.submit
+.row.form
+  = form_for band, :remote => true, :html => {:class => 'remote-form'} do |f|
+    .column= f.text_field :name
+    .column
+      = f.submit
+      = link_to 'Cancel', '#', :class => 'cancel'

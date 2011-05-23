@@ -1,9 +1,6 @@
-- if @band.errors.any?
-  - msg = @band.errors.map {|k,v| "#{k.to_s.titleize} #{v}"}.join('\n')
-  alert("#{msg}")
+removeForm();
 
-- else
-  - content = escape_javascript(render(@band))
-  $("#bands tbody").append("#{content}")
-  $("#band_#{@band.id}").effect("highlight", {}, 3000);
-  $("#new-band-form")[0].reset();
+- content = escape_javascript(render(@band))
+appendContent("#{content}")
+
+$("#band_#{@band.id}").effect("highlight", {}, 3000);
