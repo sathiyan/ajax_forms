@@ -3,7 +3,6 @@ source "http://rubygems.org"
 
 gem "rails"
 
-gem "client_side_validations"
 gem "haml"
 gem "jquery-rails"
 gem "nifty-generators"
