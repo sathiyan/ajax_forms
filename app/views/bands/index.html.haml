@@ -5,7 +5,9 @@
     %tr
       %th Name
   %tbody
-    = render :partial => @bands
+    - @bands.each do |band|
+      = render :partial => 'band', :locals => {:band => band}
+      = render :partial => 'band_form', :locals => {:band => band}
 
   %tfoot
     %tr

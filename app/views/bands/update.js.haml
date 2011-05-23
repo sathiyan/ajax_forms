@@ -5,6 +5,8 @@
 - else
   - content = escape_javascript(render(@band))
   target_row = $("tr#band_#{@band.id}")
-  target_row.next('tr').remove();
   target_row.replaceWith("#{content}")
-  
+
+  target_row = $("tr#band_#{@band.id}")
+  target_row.show();
+  target_row.next('tr').hide();
