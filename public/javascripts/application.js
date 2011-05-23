@@ -24,6 +24,8 @@ $(document).ready(function() {
     return false;
   });
 
+//  For the purposes of illustration, write to the console on each ajax
+//  event to show the events being fired and the sequence in which they are fired
   $(".remote-form")
       .live("ajax:before", function() { console.log('before') })
       .live("ajax:beforeSend", function(xhr, settings) { console.log('beforeSend') })
